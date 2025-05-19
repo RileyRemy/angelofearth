@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Angels of Earth</title>
+
+  <!-- Tailwind CSS + DaisyUI -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/daisyui@3.7.7/dist/full.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'russo': ['"Russo One"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Russo+One&display=swap" rel="stylesheet">
+
+  <style>
+    .russo {
+      font-family: 'Russo One', sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-white">
+<header class="bg-[#29DDFF] text-white font-semibold font-['Russo_One'] py-4 w-full h-[80px] flex items-center relative px-6">
+  <!-- Logo pinned left -->
+  <div class="absolute left-6 top-1/2 -translate-y-1/2 flex items-center space-x-4">
+    <img src="images/angelsofearthlogo.png" alt="angels of earth logo" class="w-[60px] h-[60px]" />
+  </div>
+
+  <!-- Centered Navigation Group -->
+  <nav class="flex items-center space-x-8 mx-auto">
+    <a href="index.html">Home</a>
+    <a href="Shop.html">Shop</a>
+    <a href="Novel.html">Novel</a>
+
+    <!-- Search input with magnifying glass inside -->
+    <div class="relative w-[200px]">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search"
+        class="bg-white text-black rounded-full w-full h-[30px] px-4 pr-10"
+      />
+    </div>
+
+    <a href="Membership.html">Membership</a>
+    <a href="Login.html">Login</a>
+  </nav>
+
+  <!-- Shopping cart icon pinned right -->
+  <div class="absolute right-6 top-1/2 -translate-y-1/2">
+    <img src="images/cart.png" alt="Shopping Cart" class="w-20 h-20" />
+  </div>
+</header>
+
+  <!-- LOGIN SECTION -->
+  <main class="flex-grow flex justify-center items-center py-16">
+    <div>
+      <h2 class="text-3xl font-bold text-center mb-6 text-black font-['Russo_One']">LOG IN</h2>
+      <form action="#" method="POST" class="space-y-4 max-w-[320px] mx-auto">
+        <!-- Email -->
+        <div>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Email"
+            required
+            class="w-full p-1.5 bg-[#E3F9FF] placeholder-gray-400 rounded-full  font-['Russo_One']"
+          >
+        </div>
+
+        <!-- Password -->
+        <div>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Password"
+            required
+            class="w-full p-1.5 bg-[#E3F9FF] placeholder-gray-400 rounded-full  font-['Russo_One']"
+          >
+        </div>
+
+        <!-- Actions -->
+        <div class="flex items-center justify-between text-sm">
+          <a href="#" class="text-[#29DDFF] hover:underline  font-['Russo_One']">Forgot password?</a>
+          <a href="#" class="text-[#29DDFF] hover:underline  font-['Russo_One']">Sign Up</a>
+        </div>
+
+        <!-- Submit -->
+        <button
+          type="submit"
+          class="w-full bg-gradient-to-r from-[#6AFFF0] to-[#15DBFF] text-black py-2 rounded-full font-semibold mb-20  font-['Russo_One']"
+        >
+          LOG IN
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#8DDFFD] text-black font-semibold text-center py-4">
+    <p class="text-[10px] text-white">2024 Angels of Earth. All rights reserved.</p>
+  </footer>
+</body>
+</html>
