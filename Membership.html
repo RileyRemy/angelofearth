@@ -19,7 +19,7 @@
     }
   </script>
 
-  <!-- GOOGLE FONTS -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Russo+One&display=swap" rel="stylesheet">
@@ -33,18 +33,18 @@
 
 <body class="bg-white">
 <header class="bg-[#29DDFF] text-white font-semibold font-['Russo_One'] py-4 w-full h-[80px] flex items-center relative px-6">
-  <!-- LOGO -->
+  <!-- Logo pinned left -->
   <div class="absolute left-6 top-1/2 -translate-y-1/2 flex items-center space-x-4">
     <img src="images/angelsofearthlogo.png" alt="angels of earth logo" class="w-[60px] h-[60px]" />
   </div>
 
-  <!-- NAVIGATION -->
+  <!-- Centered Navigation Group -->
   <nav class="flex items-center space-x-8 mx-auto">
     <a href="index.html">Home</a>
     <a href="Shop.html">Shop</a>
     <a href="Novel.html">Novel</a>
 
-    <!-- SEARCH -->
+    <!-- Search input with magnifying glass inside -->
     <div class="relative w-[200px]">
       <input
         type="text"
@@ -58,7 +58,7 @@
     <a href="Login.html">Login</a>
   </nav>
 
-  <!-- SHOPPING CART -->
+  <!-- Shopping cart icon pinned right -->
   <div class="absolute right-6 top-1/2 -translate-y-1/2">
     <img src="images/cart.png" alt="Shopping Cart" class="w-20 h-20" />
   </div>
@@ -73,7 +73,7 @@
       <P class=" text-2x1 font-regular font-['Russo_One']">Dive deeper into the story, enjoy exclusive perks, and become a part of the inner cricle</P>
       <div class="flex flex-col lg:flex-row gap-6">
 
-        <!-- FEATURES -->
+        <!-- Features Box -->
         <div class="rounded-lg w-[200px] min-h-[500px] overflow-hidden">
           <div class="bg-yellow-300 text-black text-center py-2 text-xl  font-['Russo_One']">Features</div>
           <div class="bg-cyan-100 text-black p-6 space-y-3 text-sm  font-['Russo_One']">
@@ -88,7 +88,7 @@
           </div>
         </div>
 
-        <!-- FREE TIER -->
+        <!-- Free Tier -->
 <div class="rounded-lg w-[200px] min-h-[500px] overflow-hidden">
   <div class="bg-[#90BABF] text-black text-center py-2 text-xl font-['Russo_One']">Free Tier</div>
   <div class="bg-cyan-100 text-black p-6 space-y-3 text-sm font-['Russo_One']">
@@ -118,7 +118,7 @@
 </div>
 
 
-        <!-- PAID TIER -->
+        <!-- Paid Tier -->
         <div class="rounded-lg w-[250px] min-h-[500px] overflow-hidden">
           <div class="bg-gradient-to-r from-[#6AFFF0] to-[#15DBFF] text-black text-center py-2 text-xl  font-['Russo_One']">Paid Tier</div>
           <div class="bg-cyan-100 text-black p-6 space-y-3 text-sm  font-['Russo_One'] ">
@@ -147,7 +147,7 @@
   <h2 class="text-2xl font-bold mb-2 font-['Russo_One']">Join Now</h2>
 
   <form class="space-y-3 max-w-[320px] w-full">
-    <!-- FULL NAME -->
+    <!-- Full Name -->
     <div>
       <input
         type="text"
@@ -157,7 +157,7 @@
       >
     </div>
 
-    <!-- CARD NUMBER -->
+    <!-- Card Number -->
     <div>
       <input
         type="text"
@@ -167,7 +167,7 @@
       >
     </div>
 
-    <!-- CVC AND EXP-->
+    <!-- CVC and Expiration Date -->
     <div class="flex">
       <input
         type="text"
@@ -183,7 +183,7 @@
       >
     </div>
 
-    <!-- EMAIL -->
+    <!-- Email -->
     <div>
       <input
         type="email"
@@ -193,7 +193,7 @@
       >
     </div>
 
-    <!-- PROMOTIONAL -->
+    <!-- Promotional Code -->
     <div>
       <input
         type="text"
@@ -202,13 +202,23 @@
       >
     </div>
 
-    <!-- SUBMIT -->
+    <!-- Submit Button -->
     <button
       type="submit"
       class="w-full bg-gradient-to-r from-[#6AFFF0] to-[#15DBFF] rounded-full bg-[#29DDFF] text-black py-2 rounded hover:bg-[#1bbddf]  font-['Russo_One']"
     > GET MEMBERSHIP
         </button>
       </form>
+
+      <!-- Membership button (opens Stripe checkout) -->
+<a href="https://buy.stripe.com/...YOUR_LINK..." class="your-design">
+  Join Membership ($6/month)
+</a>
+
+<!-- Chapter purchase button -->
+<a href="https://buy.stripe.com/...CHAPTER_LINK..." class="your-design">
+  Buy This Chapter ($2.50)
+</a>
     </section>
   </main>
 
