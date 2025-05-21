@@ -2,14 +2,94 @@
   "chapters": [
     {
       "title": "Chapter 1: The Cathedral of Chaos",
-      "pages": [
+      "content": [
         {
-          "left": "The cold wind whispered through the abandoned cathedral...",
-          "right": "Micah's hands trembled as he reached for the ancient door..."
+          "type": "text",
+          "value": "ANGELS OF EARTH REVISED SCRIPT 1.1 9/10
+Mary Remy also known as R.R
+INT. KOH REALM ABANDONED CATHEDRAL - NIGHT 
+
+MICAH lays flat on his back. A cold wind goes by, it brushes his curls. He wakes up blinking slowly, confused. He looks around as he sits up. He swings his legs off the stone pew and stands. 
+
+MICAH 
+(bitterly, muttering)
+This dream again.
+
+He walks forward keeping his pace slow. His expression is weary. There is silence. Different scenes of the cathedral shows rumbles on the ground broken pillars, low lights, and overgrown vegetation. 
+
+INT. CATHEDRAL HALLWAY - NIGHT
+
+MICAH is showing signs of being lost. He looks around, and behind him. The hallway from his perspective appears significantly longer than reality. 
+
+BOOM!
+
+MICAH looks up, dirt and pebbles fall from the ceiling.
+
+SCREAMS, SHOUTS, BEGGING FOR HELP
+
+MICAH 
+(Fearful, he puffs out a quick breath)
+This again…
+
+He hasten his pace to brisk walk, then runs. The VOICES get louder and clearer. 
+
+VOICE 1: PLEASE! PLEASE SOMEONE SAVE ME! 
+VOICE 2: IM SO SCARED I DON'T WANT DIE—
+VOICE 3: WHY ARE YOU RUNNING HELP US
+
+"
         },
         {
-          "left": { "image": "images/sample.jpg", "alt": "Broken stained glass" },
-          "right": "The hinges screamed like a dying animal as it opened..."
+          "type": "image",
+          "src": "images/sample.jpg",
+          "alt": "Broken stained glass"
+        }
+      ]
+    },
+    // ADD THIS NEW CHAPTER BELOW:
+    {
+      "title": "Chapter 2: The Shadow's Whisper",  // Change the title!
+      "content": [
+        {
+          "type": "text",
+          "value": "MICAH run faster, ⅔ of the voices mix together into an ear piercing scream. He nearly falls over trying to cover his ears as he runs. He stops at the end of the hallways to double doors. MICAH is desperate he pushes them, they barely budge. With a shove he slams into the doors, they open. 
+
+INT. KOH MECHAS ROOM - NIGHT 
+
+Silence there is no sound here. 
+
+It is a large space, similar to an enclosed colosseum. Pillars are broken on the ground, some in tack. There is vegetation growing everywhere. Gaps of pillows show a dark space outside. The top of the colosseum is destroyed. The moon peeks through. At it's center is a massive white mecha, it chest has a unique teal gem, same color as a cape on its back, this cape is held to his body by a golden emblem. It is powered off. 
+
+MICAH stands from his place on the ground, he is panting, exhausted. He brushes his hands and hisses. There are wounds from the fall. 
+
+A voice, regal and clear speaks it is a woman. 
+
+EUIONA
+For the first time, you've made it into this room. 
+
+MICAH looks forward. His face is in awe of the MECHA. 
+
+EUIONA
+I was wondering if you would ever be able to break free of the turmoil going on out there. 
+
+MICAH steps forward. He is perplexed by the Mecha. 
+
+MICAH
+What is this thing…
+
+EUIONA
+I see you're unable to recognize it yourself. Micah, this is your key, without it your suffering— no mankind's suffering will continue. 
+
+MICAH
+(He raises his voice) 
+What are you talking about suffering? 
+
+"  // Add your text
+        },
+        {
+          "type": "image",  // Optional image
+          "src": "images/chapter2-image.jpg",
+          "alt": "A shadowy corridor"
         }
       ]
     }
