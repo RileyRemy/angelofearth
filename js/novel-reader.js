@@ -1,87 +1,180 @@
 document.addEventListener('DOMContentLoaded', async () => {
+  // Elements
   const leftPage = document.getElementById('leftPage');
   const rightPage = document.getElementById('rightPage');
-  let currentChapter = 1;
-  let allPages = []; // Stores all formatted pages
-  let currentPageIndex = 0;
+  const chapterSelect = document.getElementById('chapterSelect');
+  const pageSelect = document.getElementById('pageSelect');
+  
+  // Configuration
+  const WORDS_PER_PAGE = 250; // Adjust this number as needed
+  const chapterTitles = {
+    1: "The Cathedral of Chaos",
+    2: "Shadow's Whisper",
+    3: "Echoes of the Forgotten",
+    4: "The Crimson Pact",
+    5: "Whispers in the Dark",
+    6: "The Obsidian Throne",
+    7: "Veil of Shadows",
+    8: "The Last Sanctuary",
+    9: "Ashes of Time",
+    10: "The Final Reckoning"
+  };
 
-  // Calculate how much text fits per page
-  function getWordsPerPage() {
-    const testEl = document.createElement('div');
-    testEl.className = 'w-[500px] invisible absolute';
-    testEl.innerHTML = '<p>test</p>';
-    document.body.appendChild(testEl);
-    const lineHeight = parseInt(getComputedStyle(testEl).lineHeight);
-    const pageHeight = parseInt(getComputedStyle(leftPage).height);
-    const linesPerPage = Math.floor(pageHeight / lineHeight);
-    document.body.removeChild(testEl);
-    return linesPerPage * 10; // Approx words per page
+  // State
+  let currentChapter = 1;
+  let allPages = [];
+  let currentPageIndex = 0; // Tracks individual pages
+
+  // Format text with enhanced image support
+  function formatText(text) {
+    return text
+      .replace(/^# (.*)$/gm, '<h1 class="text-2xl font-russo mb-4">$1</h1>')
+      .replace(/!\[(.*?)\]\((.*?)\)/g, (match, alt, src) => {
+        return `<div class="image-container my-4 mx-auto flex justify-center">
+          <img src="${src}" alt="${alt}" class="max-w-full max-h-96 object-contain">
+        </div>`;
+      })
+      .replace(/\_(.*?)\_/g, '<em>$1</em>')
+      .replace(/\*(.*?)\*/g, '<strong>$1</strong>')
+      .replace(/\n\n+/g, '</p><p>')
+      .replace(/\n/g, '<br>');
   }
 
-  // Format text and split into pages
-  async function prepareChapter(num) {
-    const response = await fetch(`chapters/${num}.txt`);
-    const text = await response.text();
-    
-    const formatted = formatText(text);
-    const wordsPerPage = getWordsPerPage();
-    const words = formatted.split(/(<[^>]+>|\s+)/).filter(w => w.trim());
-    
-    allPages = [];
+  // Split text into pages based on word count
+  function paginateContent(text) {
+    const pages = [];
+    const words = text.split(/\s+/);
     let currentPage = [];
-    let currentLength = 0;
-
+    let wordCount = 0;
+    
     words.forEach(word => {
-      const wordLength = word.split(' ').length;
-      if (currentLength + wordLength > wordsPerPage && currentPage.length > 0) {
-        allPages.push(currentPage.join(' '));
+      if (wordCount >= WORDS_PER_PAGE) {
+        pages.push(currentPage.join(' '));
         currentPage = [];
-        currentLength = 0;
+        wordCount = 0;
       }
       currentPage.push(word);
-      currentLength += wordLength;
+      wordCount++;
     });
-
-    if (currentPage.length > 0) {
-      allPages.push(currentPage.join(' '));
-    }
-  }
-
-  // Show current page
-  function showPage() {
-    if (allPages.length === 0) return;
     
-    leftPage.innerHTML = allPages[currentPageIndex] || '';
-    rightPage.innerHTML = allPages[currentPageIndex + 1] || '';
+    if (currentPage.length > 0) {
+      pages.push(currentPage.join(' '));
+    }
+    
+    return pages;
   }
 
-  // Navigation
-  document.getElementById('nextBtn').addEventListener('click', () => {
-    if (currentPageIndex + 2 < allPages.length) {
-      currentPageIndex += 2;
-      showPage();
+  // Initialize dropdowns
+  function initDropdowns() {
+    // Chapter dropdown
+    chapterSelect.innerHTML = '';
+    Object.entries(chapterTitles).forEach(([num, title]) => {
+      const option = document.createElement('option');
+      option.value = num;
+      option.textContent = `${num}. ${title}`;
+      chapterSelect.appendChild(option);
+    });
+  }
+
+  // Load chapter with proper pagination
+  async function loadChapter(num) {
+    try {
+      const response = await fetch(`chapters/${num}.txt`);
+      if (!response.ok) throw new Error("Chapter not found");
+      
+      const text = await response.text();
+      const formatted = formatText(text);
+      allPages = paginateContent(formatted);
+      
+      currentPageIndex = 0;
+      updateUI();
+      
+    } catch (error) {
+      leftPage.innerHTML = `<p class="text-red-500 p-4">Error loading chapter: ${error.message}</p>`;
+      rightPage.innerHTML = '';
+      console.error(error);
+    }
+  }
+
+  // Update all UI elements
+  function updateUI() {
+    // Always show two pages (even if second is blank)
+    leftPage.innerHTML = allPages[currentPageIndex] || '<div class="p-4"></div>';
+    rightPage.innerHTML = allPages[currentPageIndex + 1] || '<div class="p-4"></div>';
+    
+    // Update dropdowns
+    updatePageDropdown();
+    
+    // Scroll to top
+    window.scrollTo(0, 0);
+  }
+
+  // Update page dropdown (shows individual pages but navigation is by spread)
+  function updatePageDropdown() {
+    pageSelect.innerHTML = '';
+    allPages.forEach((_, index) => {
+      const option = document.createElement('option');
+      option.value = index;
+      option.textContent = `Page ${index + 1}`;
+      option.selected = (index === currentPageIndex);
+      pageSelect.appendChild(option);
+    });
+  }
+
+  // Navigate to specific page (always shows as left page of spread)
+  function goToPage(pageIndex) {
+    // Ensure we don't go beyond the last page
+    currentPageIndex = Math.min(pageIndex, allPages.length - 1);
+    updateUI();
+  }
+
+  // Navigation between pages (always moves by one page at a time)
+  function navigate(direction) {
+    if (direction === 'next') {
+      if (currentPageIndex + 1 < allPages.length) {
+        currentPageIndex += 1;
+      } else {
+        // Go to next chapter if available
+        const nextChapter = currentChapter + 1;
+        if (chapterTitles[nextChapter]) {
+          currentChapter = nextChapter;
+          loadChapter(nextChapter);
+          return;
+        }
+      }
     } else {
-      // Load next chapter if available
+      if (currentPageIndex > 0) {
+        currentPageIndex -= 1;
+      } else if (currentChapter > 1) {
+        // Go to previous chapter
+        currentChapter--;
+        loadChapter(currentChapter);
+        return;
+      }
     }
+    updateUI();
+  }
+
+  // Initialize everything
+  initDropdowns();
+  loadChapter(1);
+
+  // Event listeners
+  chapterSelect.addEventListener('change', (e) => {
+    currentChapter = parseInt(e.target.value);
+    loadChapter(currentChapter);
   });
 
-  document.getElementById('prevBtn').addEventListener('click', () => {
-    if (currentPageIndex >= 2) {
-      currentPageIndex -= 2;
-      showPage();
-    }
+  pageSelect.addEventListener('change', (e) => {
+    goToPage(parseInt(e.target.value));
   });
 
-  // Initialize
-  prepareChapter(1).then(() => showPage());
+  document.getElementById('nextBtn').addEventListener('click', () => navigate('next'));
+  document.getElementById('prevBtn').addEventListener('click', () => navigate('prev'));
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') navigate('next');
+    if (e.key === 'ArrowLeft') navigate('prev');
+  });
 });
-
-function formatText(text) {
-  return text
-    .replace(/\_(.*?)\_/g, '<em>$1</em>')
-    .replace(/\*(.*?)\*/g, '<strong>$1</strong>')
-    .replace(/!\[(.*?)\]\((.*?)\)/g, '<img src="images/$1" alt="$2" class="my-4 mx-auto max-w-full">')
-    .replace(/^# (.*)$/gm, '<h1 class="text-2xl font-russo mb-4">$1</h1>')
-    .replace(/\n\n/g, '</p><p>')
-    .replace(/\n/g, '<br>');
-}
