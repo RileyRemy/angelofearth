@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     // Load story content
-    const response = await fetch('content.json');
+   const response = await fetch('content.json');
     if (!response.ok) throw new Error("Couldn't load story");
     const story = await response.json();
     
