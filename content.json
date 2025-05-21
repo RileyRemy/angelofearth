@@ -1,0 +1,17 @@
+{
+  "chapters": [
+    {
+      "title": "Chapter 1: The Cathedral of Chaos",
+      "pages": [
+        {
+          "left": "The cold wind whispered through the abandoned cathedral...",
+          "right": "Micah's hands trembled as he reached for the ancient door..."
+        },
+        {
+          "left": { "image": "images/sample.jpg", "alt": "Broken stained glass" },
+          "right": "The hinges screamed like a dying animal as it opened..."
+        }
+      ]
+    }
+  ]
+}
