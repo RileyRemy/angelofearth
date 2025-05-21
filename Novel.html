@@ -20,30 +20,28 @@
     }
   </script>
 
-  <!-- GOOGLE FONTS-->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Russo+One&display=swap" rel="stylesheet" />
-
-  <style>
-  </style>
 </head>
+
 
 <body class="bg-white font-outfit">
 
 <header class="bg-[#29DDFF] text-white font-semibold font-russo py-4 w-full h-[80px] flex items-center relative px-6">
-  <!-- LOGO -->
+  <!-- Logo pinned left -->
   <div class="absolute left-6 top-1/2 -translate-y-1/2 flex items-center space-x-4">
     <img src="images/angelsofearthlogo.png" alt="angels of earth logo" class="w-[60px] h-[60px]" />
   </div>
 
-  <!-- NAVIGATION -->
+  <!-- Centered Navigation Group -->
   <nav class="flex items-center space-x-8 mx-auto">
     <a href="index.html">Home</a>
     <a href="Shop.html">Shop</a>
     <a href="Novel.html">Novel</a>
 
-    <!-- SEARCH -->
+    <!-- Search input with magnifying glass inside -->
     <div class="relative w-[200px]">
       <input
         type="text"
@@ -57,94 +55,60 @@
     <a href="Login.html">Login</a>
   </nav>
 
-  <!-- SHOPPING CART -->
+  <!-- Shopping cart icon pinned right -->
   <div class="absolute right-6 top-1/2 -translate-y-1/2">
     <img src="images/cart.png" alt="Shopping Cart" class="w-20 h-20" />
   </div>
 </header>
 
-<!-- NOVEL READER SECTION -->
+<!-- SINGLE NOVEL READER SECTION -->
 <section class="px-6 py-10 flex flex-col items-center gap-6 font-outfit">
-
-  <!-- CHAPTER DROPDOWN with Bookmark Icon -->
+  <!-- Dynamic Controls -->
   <div class="w-full max-w-4xl flex justify-center mb-4 relative items-center space-x-4">
-    
-    <!-- CHAPTER DROP DOWN -->
     <div class="relative w-[200px]">
-      <select class="appearance-none w-full rounded px-4 py-2 text-sm pr-10 bg-[#29DDFF] text-white h-[38px] font-russo">
-        <option>Chapter 1: The Cathedral of Chaos</option>
-        <option>Chapter 2: My friend far away</option>
-        <option>Chapter 3: Cold-blooded</option>
+      <select id="chapterSelect" class="appearance-none w-full rounded px-4 py-2 text-sm pr-10 bg-[#29DDFF] text-white h-[38px] font-russo">
+        <!-- Filled by JavaScript -->
       </select>
-
-      <!-- ARROW DROP DOWN  -->
       <div class="pointer-events-none absolute top-0 right-0 h-full w-10 bg-[#29DDFF] flex items-center justify-center rounded-r">
         <img src="images/triangle.svg" alt="arrow" class="w-3 h-3 rotate-180 brightness-0 invert" />
       </div>
     </div>
 
-    <!-- PAGE DROP DOWN -->
     <div class="relative w-[120px]">
-      <select class="appearance-none w-full rounded px-4 py-2 text-sm pr-10 bg-[#29DDFF] text-white h-[38px] font-russo">
-        <option>Page 1</option>
-        <option>Page 2</option>
-        <option>Page 3</option>
+      <select id="pageSelect" class="appearance-none w-full rounded px-4 py-2 text-sm pr-10 bg-[#29DDFF] text-white h-[38px] font-russo">
+        <!-- Filled by JavaScript -->
       </select>
-
-      <!-- ARROW DROP DOWN -->
       <div class="pointer-events-none absolute top-0 right-0 h-full w-10 bg-[#29DDFF] flex items-center justify-center rounded-r">
         <img src="images/triangle.svg" alt="arrow" class="w-3 h-3 rotate-180 brightness-0 invert" />
       </div>
     </div>
 
-    <!-- BOOKMARK -->
     <img src="images/bookmark.png" alt="bookmark" class="h-[100px] w-auto" />
-
   </div>
 
-  <!-- OUTSIDE ARROWS -->
-  <div class="w-full max-w-5xl flex items-center justify-between relative mx-auto">
+  <!-- Book Spread -->
+  <div class="flex items-center justify-center w-full">
+    <img src="images/arrowleft.png" alt="Left Arrow" id="prevBtn" class="w-20 h-20 cursor-pointer mr-4" />
     
-    <!-- LEFT ARROW -->
-    <img 
-      src="images/arrowleft.png"  
-      alt="Left Arrow" 
-      class="w-20 h-20 cursor-pointer"
-    />
-
-    <!-- PAGE BOX -->
-    <div class="bg-[#E3F9FF] p-6 h-[600px] w-[500px] max-w-4xl overflow-y-auto shadow-md text-left font-outfit">
-      <p class="leading-relaxed">
-      The cold wind whispered through the abandoned cathedral, its icy temperature brushing against Micah’s curls as he lay motionless on the stone floor. His dark brown eyes fluttered open, blinking slowly against the dim light that filtered through the crack in the crumbling walls. Confusion etched itself across his face, his brows furrowing as he pushed himself up, his hands pressing against the cold, uneven stone.
-
-      “This dream again,” he muttered bitterly, his voice low and weary.
-
-      He swung his legs off the stone pew, his movements sluggish, as if the weight of the room was pressing down on his shoulders. Standing, he took a hesitant step forward, his eyes scanning the cathedral. The once-grand hall was now a shadow of its former self - broken pillars lay scattered, their jagged edges catching the faint glow of the moonlight. Overgrown vegetation clawed its way through the cracks, weaving a tapestry of decay. The air was thick with silence, broken only by the occasional creak of shifting stone.
-
-      Micah’s expression was one of exhaustion, his dark circles more pronounced under the pale light. He moved slowly, his footsteps echoing softly as he ventured deeper into the cathedral. The hallway stretched before him, its length distorted seeming to stretch endlessly into the darkness. He glanced over his shoulder, his heart quickening as the walls seemed to close in around him.
-
-      BOOM
-
-      the sound reverberated through the cathedral, shaking the ground beneath his feet. Micah’s head snapped upward, as the dirt and pebbles rained down from the ceiling. His breath hitched, his chest tightening as the scream began
-
-      “PLEASE! PLEASE, SOMEONE SAVE ME!”
-      </p>
+    <div class="bg-[#E3F9FF] p-6 shadow-md flex gap-6" style="width: 1040px;">
+      <div id="leftPage" class="w-[500px]">
+        <p class="leading-relaxed"><!-- Content loads here --></p>
+      </div>
+      <div id="rightPage" class="w-[500px] pl-4 border-l border-gray-300">
+        <p class="leading-relaxed"><!-- Content loads here --></p>
+      </div>
     </div>
-
-    <!-- RIGHT ARROW -->
-    <img 
-      src="images/arrowright.png"  
-      alt="Right Arrow" 
-      class="w-20 h-20 cursor-pointer"
-    />
-
+    
+    <img src="images/arrowright.png" alt="Right Arrow" id="nextBtn" class="w-20 h-20 cursor-pointer ml-4" />
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="bg-[#8DDFFD] text-black font-semibold font-russo text-center py-4">
+<!-- FOOTER (now properly sized) -->
+<footer class="bg-[#8DDFFD] text-black font-semibold font-russo text-center py-4 w-full">
   <p class="text-[10px] text-white">2024 Angels of Earth. All rights reserved.</p>
 </footer>
 
+<!-- Script at the BOTTOM of body -->
+<script src="/js/novel-reader.js" defer></script>
 </body>
 </html>
