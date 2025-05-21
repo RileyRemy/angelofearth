@@ -24,124 +24,91 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Russo+One&display=swap" rel="stylesheet" />
-  
-  <!-- Twine Story Data -->
-  <script id="storyData" type="application/json">
-    {
-      "chapters": [
-        {
-          "title": "Chapter 1: The Cathedral of Chaos",
-          "passages": [
-            {
-              "pid": 1,
-              "content": "ANGELS OF EARTH REVISED SCRIPT 1.1 9/10 Mary Remy also known as R.R\n\nINT. KOH REALM ABANDONED CATHEDRAL - NIGHT\n\nMICAH lays flat on his back. A cold wind goes by, it brushes his curls. He wakes up blinking slowly, confused.",
-              "links": [
-                {"pid": 2, "name": "Continue"}
-              ]
-            },
-            {
-              "pid": 2,
-              "content": "He looks around as he sits up. He swings his legs off the stone pew and stands.\n\nMICAH\n(bitterly, muttering)\nThis dream again.\n\n[[Continue|3]]\n\n[img[images/sample.jpg]]"
-            }
-          ]
-        }
-      ]
-    }
-  </script>
 </head>
 
+
 <body class="bg-white font-outfit">
-  <!-- Your existing header -->
-  <header class="bg-[#29DDFF] text-white font-semibold font-russo py-4 w-full h-[80px] flex items-center relative px-6">
-    <!-- ... keep your existing header code ... -->
-  </header>
 
-  <!-- Modified Novel Reader Section -->
-  <section class="px-6 py-10 flex flex-col items-center gap-6 font-outfit">
-    <div class="w-full max-w-4xl flex justify-center mb-4 relative items-center space-x-4">
-      <!-- Chapter dropdown -->
-      <div class="relative w-[200px]">
-        <select id="chapterSelect" class="appearance-none w-full rounded px-4 py-2 text-sm pr-10 bg-[#29DDFF] text-white h-[38px] font-russo">
-          <option value="0">Chapter 1: The Cathedral</option>
-        </select>
-        <div class="pointer-events-none absolute top-0 right-0 h-full w-10 bg-[#29DDFF] flex items-center justify-center rounded-r">
-          <img src="images/triangle.svg" alt="arrow" class="w-3 h-3 rotate-180 brightness-0 invert" />
-        </div>
-      </div>
+<header class="bg-[#29DDFF] text-white font-semibold font-russo py-4 w-full h-[80px] flex items-center relative px-6">
+  <!-- Logo pinned left -->
+  <div class="absolute left-6 top-1/2 -translate-y-1/2 flex items-center space-x-4">
+    <img src="images/angelsofearthlogo.png" alt="angels of earth logo" class="w-[60px] h-[60px]" />
+  </div>
 
-      <img src="images/bookmark.png" alt="bookmark" class="h-[100px] w-auto" />
+  <!-- Centered Navigation Group -->
+  <nav class="flex items-center space-x-8 mx-auto">
+    <a href="index.html">Home</a>
+    <a href="Shop.html">Shop</a>
+    <a href="Novel.html">Novel</a>
+
+    <!-- Search input with magnifying glass inside -->
+    <div class="relative w-[200px]">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search"
+        class="bg-white text-black rounded-full w-full h-[30px] px-4 pr-10"
+      />
     </div>
 
-    <!-- Twine Content Display -->
-    <div class="flex items-center justify-center w-full">
-      <button id="prevBtn" class="w-20 h-20 cursor-pointer mr-4">
-        <img src="images/arrowleft.png" alt="Left Arrow" />
-      </button>
-      
-      <div class="bg-[#E3F9FF] p-6 shadow-md flex gap-6" style="width: 1040px;">
-        <div id="twineContent" class="w-full">
-          <!-- Content will be loaded here by JavaScript -->
-        </div>
+    <a href="Membership.html">Membership</a>
+    <a href="Login.html">Login</a>
+  </nav>
+
+  <!-- Shopping cart icon pinned right -->
+  <div class="absolute right-6 top-1/2 -translate-y-1/2">
+    <img src="images/cart.png" alt="Shopping Cart" class="w-20 h-20" />
+  </div>
+</header>
+
+<!-- SINGLE NOVEL READER SECTION -->
+<section class="px-6 py-10 flex flex-col items-center gap-6 font-outfit">
+  <!-- Dynamic Controls -->
+  <div class="w-full max-w-4xl flex justify-center mb-4 relative items-center space-x-4">
+    <div class="relative w-[200px]">
+      <select id="chapterSelect" class="appearance-none w-full rounded px-4 py-2 text-sm pr-10 bg-[#29DDFF] text-white h-[38px] font-russo">
+        <!-- Filled by JavaScript -->
+      </select>
+      <div class="pointer-events-none absolute top-0 right-0 h-full w-10 bg-[#29DDFF] flex items-center justify-center rounded-r">
+        <img src="images/triangle.svg" alt="arrow" class="w-3 h-3 rotate-180 brightness-0 invert" />
       </div>
-      
-      <button id="nextBtn" class="w-20 h-20 cursor-pointer ml-4">
-        <img src="images/arrowright.png" alt="Right Arrow" />
-      </button>
     </div>
-  </section>
 
-  <!-- Your existing footer -->
-  <footer class="bg-[#8DDFFD] text-black font-semibold font-russo text-center py-4 w-full">
-    <p class="text-[10px] text-white">2024 Angels of Earth. All rights reserved.</p>
-  </footer>
+    <div class="relative w-[120px]">
+      <select id="pageSelect" class="appearance-none w-full rounded px-4 py-2 text-sm pr-10 bg-[#29DDFF] text-white h-[38px] font-russo">
+        <!-- Filled by JavaScript -->
+      </select>
+      <div class="pointer-events-none absolute top-0 right-0 h-full w-10 bg-[#29DDFF] flex items-center justify-center rounded-r">
+        <img src="images/triangle.svg" alt="arrow" class="w-3 h-3 rotate-180 brightness-0 invert" />
+      </div>
+    </div>
 
-  <!-- New Twine Integration Script -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Load story data
-      const storyData = JSON.parse(document.getElementById('storyData').textContent);
-      let currentChapter = 0;
-      let currentPassage = 0;
-      
-      // Display initial passage
-      displayPassage(storyData.chapters[currentChapter].passages[currentPassage]);
-      
-      // Navigation handlers
-      document.getElementById('nextBtn').addEventListener('click', () => {
-        const chapter = storyData.chapters[currentChapter];
-        if (currentPassage < chapter.passages.length - 1) {
-          currentPassage++;
-          displayPassage(chapter.passages[currentPassage]);
-        }
-      });
-      
-      document.getElementById('prevBtn').addEventListener('click', () => {
-        if (currentPassage > 0) {
-          currentPassage--;
-          displayPassage(storyData.chapters[currentChapter].passages[currentPassage]);
-        }
-      });
-      
-      function displayPassage(passage) {
-        const contentDiv = document.getElementById('twineContent');
-        
-        // Basic Twine content rendering
-        let html = passage.content
-          .replace(/\[\[(.*?)\|(.*?)\]\]/g, '<a href="#" class="text-[#29DDFF] font-bold">$1</a>')
-          .replace(/\[img\[(.*?)\]\]/g, '<img src="$1" class="my-4 mx-auto max-w-full" />');
-          
-        contentDiv.innerHTML = `
-          <div class="prose max-w-none">
-            ${html}
-          </div>
-        `;
-      }
-    });
-  </script>
-</body>
-</html>
+    <img src="images/bookmark.png" alt="bookmark" class="h-[100px] w-auto" />
+  </div>
+
+  <!-- Book Spread -->
+  <div class="flex items-center justify-center w-full">
+    <img src="images/arrowleft.png" alt="Left Arrow" id="prevBtn" class="w-20 h-20 cursor-pointer mr-4" />
+    
+    <div class="bg-[#E3F9FF] p-6 shadow-md flex gap-6" style="width: 1040px;">
+      <div id="leftPage" class="w-[500px]">
+        <p class="leading-relaxed"><!-- Content loads here --></p>
+      </div>
+      <div id="rightPage" class="w-[500px] pl-4 border-l border-gray-300">
+        <p class="leading-relaxed"><!-- Content loads here --></p>
+      </div>
+    </div>
+    
+    <img src="images/arrowright.png" alt="Right Arrow" id="nextBtn" class="w-20 h-20 cursor-pointer ml-4" />
+  </div>
+</section>
+
+<!-- FOOTER (now properly sized) -->
+<footer class="bg-[#8DDFFD] text-black font-semibold font-russo text-center py-4 w-full">
+  <p class="text-[10px] text-white">2024 Angels of Earth. All rights reserved.</p>
+</footer>
 
 <!-- Script at the BOTTOM of body -->
-<script src="js/novel-reader.js"></script> 
+<script src="/js/novel-reader.js" defer></script>
 </body>
 </html>
