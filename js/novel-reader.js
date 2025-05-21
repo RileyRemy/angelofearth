@@ -81,3 +81,10 @@ function renderCurrentPage() {
   const chapter = currentState.story.chapters[currentState.chapterIndex];
   renderPage(chapter.pages[currentState.pageIndex]);
 }
+
+function formatText(text) {
+  return text
+    .replace(/\_(.*?)\_/g, '<em>$1</em>')       // _italics_
+    .replace(/\*(.*?)\*/g, '<strong>$1</strong>') // *bold*
+    .replace(/\n/g, '<br>');                     // New lines
+}
